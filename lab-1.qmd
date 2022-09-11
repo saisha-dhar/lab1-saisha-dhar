@@ -68,8 +68,13 @@ I prefer this plot as compared to exercise 2 because I am able to see the relati
 ## Exercise 5
 
 ```{r}
-ggplot(midwest, aes(x = state, y = area)) + 
-  geom_boxplot()
+
+#| label: generate-boxplot-of-area-of-counties-by-state
+
+ggplot(midwest, aes(x = state, y = area, fill = state)) + 
+  geom_boxplot() +
+labs(x = "State", y = "Area of County", fill = "State") + 
+  ggtitle("Area of Counties by State")
 
 ```
 Each boxplot represents the areas of the counties within a state. Indiana and Ohio have counties with a smaller and lower range of areas, while the other states have larger quartiles, ranges, and areas overall. Michigan is the state with the single largest county, because each point is the area of a county and MI has the point highest on the y-axis. 
@@ -77,11 +82,14 @@ Each boxplot represents the areas of the counties within a state. Indiana and Oh
 ## Exercise 6
 
 ```{r}
+#| label: load-packages
+
 library(ggplot2)
 ```
 
 
 ```{r}
+#| label: generate-segmented-bar-chart-of-counties-in-metro-by-state
 
 midwest <- midwest |>
   mutate(metro = if_else(inmetro == 1, "Yes", "No"))
@@ -90,9 +98,7 @@ ggplot(data = midwest, aes(x = state, fill = metro, y=1)) +
 labs(x = "State", y = "Percentage of Counties in Metro", fill = "In Metro") +
 ggtitle("Counties in Metro Area by State")
 
-
 ```
-
 
 ## Exercise 7
 
