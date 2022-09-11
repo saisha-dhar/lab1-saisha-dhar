@@ -45,16 +45,24 @@ ggplot(midwest, aes(x = percollege, y = percbelowpoverty, color = state)) +
 
 ## Exercise 3
 
-(Type your answer to Exercise 3 here. Add code chunks as needed. Don't forget to label your code chunk. Do not use spaces in code chunk labels.)
-
-
-
-
-
+I observe a relatively neutral general distribution, I don't see a very strong negative or positive association between the percentage of people with a college degree compared to the percentage of people below the poverty line. When looking at states, however, some have more of a negative association like WI and IL, and states like IN and MI are more of a neutral association.  
 
 ## Exercise 4
 
+```{r}
+#| label: generate-scatterplots-by-state-to-compare-people-with-college-degree-and-people-below-poverty
 
+ggplot(midwest, aes(x = percollege, y = percbelowpoverty, color = state)) +
+  geom_point() + 
+  scale_fill_viridis_d() + 
+  geom_smooth(se = FALSE) + 
+  facet_wrap(~state) +  
+  labs(x = "% of People with a College Degree", y = "% of People Below Poverty", color = "State") + 
+  ggtitle("% of People with a College Degree vs. % of People Below Poverty by State")
+
+```
+
+I prefer this plot as compared to exercise 2 because I am able to see the relationship of percent of people with a college degree vs. percent of people below the poverty line more clearly in different states, while exercise 2 I can't see the relationships that clearly because of too many points together. 
 
 
 ## Exercise 5
