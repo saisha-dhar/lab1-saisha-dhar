@@ -23,7 +23,8 @@ library(viridis)
 #| label: histogram-population-density-of-counties
 
 ggplot(midwest, aes(x = popdensity)) +
-  geom_histogram(binwidth = 10000) + labs(x = "Population Density", y = "Counties") + ggtitle("Population Density of Counties")
+  geom_histogram(binwidth = 10000) + labs(x = "Population Density", 
+      y = "Counties") + ggtitle("Population Density of Counties")
 
 ```
 The shape of the distribution is skewed right, which means there are more counties that have lower rather than higher population density. There appear to be a couple outliers, as there are some counties that are between 75,000-100,000 and they aren't in the highest frequency categories.
@@ -38,8 +39,10 @@ The shape of the distribution is skewed right, which means there are more counti
 ggplot(midwest, aes(x = percollege, y = percbelowpoverty, color = state)) +
   geom_point() + 
   scale_fill_viridis_d() +
-  labs(x = "Percentage of People with a College Degree", y = "Percentage of People Below Poverty", color = "State") + 
-  ggtitle("Percentage of People with a College Degree vs. Percentage of People Below Poverty")
+  labs(x = "Percentage of People with a College Degree", 
+       y = "Percentage of People Below Poverty", color = "State") + 
+  ggtitle("Percentage of People with a College Degree vs. 
+          Percentage of People Below Poverty")
 
 ```
 
@@ -57,8 +60,10 @@ ggplot(midwest, aes(x = percollege, y = percbelowpoverty, color = state)) +
   scale_fill_viridis_d() + 
   geom_smooth(se = FALSE) + 
   facet_wrap(~state) +  
-  labs(x = "% of People with a College Degree", y = "% of People Below Poverty", color = "State") + 
-  ggtitle("% of People with a College Degree vs. % of People Below Poverty by State")
+  labs(x = "% of People with a College Degree", 
+       y = "% of People Below Poverty", color = "State") + 
+  ggtitle("% of People with a College Degree 
+          vs. % of People Below Poverty by State")
 
 ```
 
@@ -73,7 +78,8 @@ I prefer this plot as compared to exercise 2 because I am able to see the relati
 
 ggplot(midwest, aes(x = state, y = area, fill = state)) + 
   geom_boxplot() +
-labs(x = "State", y = "Area of County", fill = "State") + 
+labs(x = "State", y = "Area of County", 
+     fill = "State") + 
   ggtitle("Area of Counties by State")
 
 ```
@@ -89,7 +95,8 @@ midwest <- midwest |>
   mutate(metro = if_else(inmetro == 1, "Yes", "No"))
 ggplot(data = midwest, aes(x = state, fill = metro, y=1)) +
   geom_bar(position = "fill", stat = "identity") +
-labs(x = "State", y = "Percentage of Counties in Metro", fill = "In Metro") +
+labs(x = "State", y = "Percentage of Counties in Metro", 
+     fill = "In Metro") +
 ggtitle("Counties in Metro Area by State")
 
 ```
@@ -99,7 +106,12 @@ ggtitle("Counties in Metro Area by State")
 ```{r}
 #| label: generate-college-degree-plot
 
-ggplot(midwest, aes(x = percollege, y=popdensity, color=percbelowpoverty)) + geom_point(alpha = 0.5, size = 2) + facet_wrap(~state) + labs(x = "% college educated", y = "Population density (person/unit area)", color = "% below \n poverty line") + ggtitle("Do people with college degrees tend to live in denser areas?") + theme_minimal()
+ggplot(midwest, aes(x = percollege, y=popdensity, color=percbelowpoverty)) + geom_point(alpha = 0.5, size = 2) + facet_wrap(~state) + 
+  labs(x = "% college educated", y = "Population density (person/unit area)", 
+       color = "% below \n poverty line") + 
+  ggtitle("Do people with college degrees tend to live in 
+          denser areas?") + 
+  theme_minimal()
 
 ```
 
