@@ -1,6 +1,6 @@
 ---
 title: "Lab 1 - Data visualization"
-author: "[INSERT NAME]"
+author: "Saisha"
 format: pdf
 editor: visual
 ---
@@ -12,27 +12,83 @@ editor: visual
 #| message: false
 
 library(tidyverse)
+library(viridis)
+
 ```
 
 ## Exercise 1
 
-(Type your answer to Exercise 1 here. Add code chunks as needed. Don't forget to label your code chunk. Do not use spaces in code chunk labels.)
+```{r}
+
+#| label: generate-histogram-to-visualize-population-density-of-counties
+
+ggplot(midwest, aes(x = popdensity)) +
+  geom_histogram(binwidth = 10000) + labs(x = "Population Density", y = "Counties") + ggtitle("Population Density of Counties")
+
+```
+The shape of the distribution is skewed right, which means there are more counties that have lower rather than higher population density. There appear to be a couple outliers, as there are some counties that are between 75,000-100,000 and they aren't in the highest frequency categories.
+
 
 ## Exercise 2
 
-(Type your answer to Exercise 2 here. Add code chunks as needed. Don't forget to label your code chunk. Do not use spaces in code chunk labels.)
+```{r}
+
+#| label: generate-scatterplot-to-compare-people-with-college-degree-and-people-below-poverty
+
+ggplot(midwest, aes(x = percollege, y = percbelowpoverty, color = state)) +
+  geom_point() + 
+  scale_fill_viridis_d() +
+  labs(x = "Percentage of People with a College Degree", y = "Percentage of People Below Poverty", color = "State") + 
+  ggtitle("Percentage of People with a College Degree vs. Percentage of People Below Poverty")
+
+```
 
 ## Exercise 3
 
 (Type your answer to Exercise 3 here. Add code chunks as needed. Don't forget to label your code chunk. Do not use spaces in code chunk labels.)
 
+
+
+
+
+
 ## Exercise 4
+
+
 
 
 ## Exercise 5
 
+```{r}
+ggplot(midwest, aes(x = state, y = area)) + 
+  geom_boxplot()
+
+```
+Each boxplot represents the areas of the counties within a state. Indiana and Ohio have counties with a smaller and lower range of areas, while the other states have larger quartiles, ranges, and areas overall. Michigan is the state with the single largest county, because each point is the area of a county and MI has the point highest on the y-axis. 
 
 ## Exercise 6
 
+```{r}
+library(ggplot2)
+```
+
+
+```{r}
+
+midwest <- midwest |>
+  mutate(metro = if_else(inmetro == 1, "Yes", "No"))
+ggplot(data = midwest, aes(x = state, fill = metro, y=1)) +
+  geom_bar(position = "fill", stat = "identity") +
+labs(x = "State", y = "Percentage of Counties in Metro", fill = "In Metro") +
+ggtitle("Counties in Metro Area by State")
+
+
+```
+
 
 ## Exercise 7
+
+
+
+
+
