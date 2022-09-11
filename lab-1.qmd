@@ -16,6 +16,13 @@ library(viridis)
 
 ```
 
+```{r}
+#| label: glimpse
+glimpse(midwest)
+
+```
+
+
 ## Exercise 1
 
 ```{r}
