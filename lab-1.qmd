@@ -1,6 +1,6 @@
 ---
 title: "Lab 1 - Data visualization"
-author: "Saisha"
+author: "Saisha Dhar"
 format: pdf
 editor: visual
 ---
@@ -80,12 +80,6 @@ labs(x = "State", y = "Area of County", fill = "State") +
 Each boxplot represents the areas of the counties within a state. Indiana and Ohio have counties with a smaller and lower range of areas, while the other states have larger quartiles, ranges, and areas overall. Michigan is the state with the single largest county, because each point is the area of a county and MI has the point highest on the y-axis. 
 
 ## Exercise 6
-
-```{r}
-#| label: load-packages
-
-library(ggplot2)
-```
 
 
 ```{r}
