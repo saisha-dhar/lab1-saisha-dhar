@@ -20,7 +20,7 @@ library(viridis)
 
 ```{r}
 
-#| label: generate-histogram-to-visualize-population-density-of-counties
+#| label: histogram-population-density-of-counties
 
 ggplot(midwest, aes(x = popdensity)) +
   geom_histogram(binwidth = 10000) + labs(x = "Population Density", y = "Counties") + ggtitle("Population Density of Counties")
@@ -33,7 +33,7 @@ The shape of the distribution is skewed right, which means there are more counti
 
 ```{r}
 
-#| label: generate-scatterplot-to-compare-people-with-college-degree-and-people-below-poverty
+#| label: degree-versus-poverty-scatterplot
 
 ggplot(midwest, aes(x = percollege, y = percbelowpoverty, color = state)) +
   geom_point() + 
@@ -50,7 +50,7 @@ I observe a relatively neutral general distribution, I don't see a very strong n
 ## Exercise 4
 
 ```{r}
-#| label: generate-scatterplots-by-state-to-compare-people-with-college-degree-and-people-below-poverty
+#| label: generate-scatterplots-by-state
 
 ggplot(midwest, aes(x = percollege, y = percbelowpoverty, color = state)) +
   geom_point() + 
@@ -69,7 +69,7 @@ I prefer this plot as compared to exercise 2 because I am able to see the relati
 
 ```{r}
 
-#| label: generate-boxplot-of-area-of-counties-by-state
+#| label: boxplot-area-of-counties-by-state
 
 ggplot(midwest, aes(x = state, y = area, fill = state)) + 
   geom_boxplot() +
@@ -89,7 +89,7 @@ library(ggplot2)
 
 
 ```{r}
-#| label: generate-segmented-bar-chart-of-counties-in-metro-by-state
+#| label: generate-segmented-bar-chart
 
 midwest <- midwest |>
   mutate(metro = if_else(inmetro == 1, "Yes", "No"))
@@ -102,7 +102,10 @@ ggtitle("Counties in Metro Area by State")
 
 ## Exercise 7
 
+```{r}
+#| label: generate-college-degree-plot
 
+ggplot(midwest, aes(x = percollege, y=popdensity, color=percbelowpoverty)) + geom_point(alpha = 0.5, size = 2) + facet_wrap(~state) + labs(x = "% college educated", y = "Population density (person/unit area)", color = "% below \n poverty line") + ggtitle("Do people with college degrees tend to live in denser areas?") + theme_minimal()
 
-
+```
 
